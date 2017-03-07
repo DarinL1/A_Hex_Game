@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovePiece : MonoBehaviour {
-	
-	public Vector3 targetPosition;
-	public float x;
-	public float y;
+
+	private float boardScale;
+
+	private Vector3 targetPosition;
+	private float x;
+	private float y;
+
+	void Start () {
+		boardScale = 0.872f;
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -19,7 +25,7 @@ public class MovePiece : MonoBehaviour {
 			//transform.position = targetPosition;   // Imediately Sets Position
 
 
-			x = ((Mathf.Round ((1 / 0.88f) * targetPosition.x)));
+			x = ((Mathf.Round ((1 / boardScale) * targetPosition.x)));
 			y = ((Mathf.Round (2 * targetPosition.y)) / 2);
 			if (Mathf.Abs(x % 2) == 0f) {
 				// Even Number
@@ -39,7 +45,7 @@ public class MovePiece : MonoBehaviour {
 			Debug.Log (y);
 
 
-			targetPosition.Set(x * 0.88f, y, 0.0f);
+			targetPosition.Set(x * boardScale, y, 0.0f);
 
 		}
 
